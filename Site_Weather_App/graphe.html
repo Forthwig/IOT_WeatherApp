@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Weather App</title>
+    <link rel="icon" type="ico"  href="imgs/logo.ico"/>
+    <link rel="stylesheet" href="css/agency.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+</head>
+<body>
+<div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="index.html">Home</a>
+      <a href="graphe.html">Graphe</a>
+      <a @click="changeCity($event)">Lille</a>
+      <a @click="changeCity($event)">Paris</a>
+      <a @click="changeCity($event)">Kiev</a>
+
+      <a href="#">Contact</a>
+    </div>
+
+    <!-- Use any element to open the sidenav -->
+    <span id="click" onclick="openNav()"> ☰ Menu </span>
+
+
+    <script type="text/javascript">
+
+        /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("weather").style.marginLeft = "250px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+
+    /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("weather").style.marginLeft = "0";
+      document.getElementById("body").style.backgroundColor = "rgba(0,0,0,0.8)"; 
+    }
+    </script>
+
+
+<h1>GRAPHE</h1>
+
+<div style="width:70%;
+    margin: auto; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);">
+<canvas id="myChart" height="" ></canvas>
+
+<script type="text/javascript">
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',       
+
+    // The data for our dataset
+    data: {
+        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        datasets: [
+        {
+            label: 'Temperature',
+            backgroundColor: 'rgba(0, 0, 0, 0.1)',
+            borderColor: 'rgb(234, 46, 46)',
+            data: [0, 10, 5, 2, 20, 30, 45]
+
+        },
+        {            
+            label: 'Humidity',
+            backgroundColor: 'rgba(0, 0, 0, 0.1)',
+            borderColor: 'rgb(63, 127, 191)',
+            data: [80,70,56,95,10,35,47]
+        }
+
+
+        ]
+    },
+
+    // Configuration options go here
+    options: {
+
+        legend: {
+            labels: {
+                fontColor: "white",
+                fontSize: 18
+            }
+        },
+
+        scales: {
+            yAxes: [{
+                gridLines: {
+                    color: 'rgba(0, 0, 0, 1)' // makes grid lines from y axis black
+                },
+                ticks: {
+                    fontColor: "white",
+                    fontSize: 18,
+                    beginAtZero: true
+                }
+            }],
+
+            xAxes: [{
+                gridLines: {
+                    color: 'rgba(0, 0, 0, 1)' // makes grid lines from y axis red
+                },
+                ticks: {
+                    fontColor: "white",
+                    fontSize: 18,
+                    beginAtZero: true
+                }                
+            }]        
+        }
+    }
+}); 
+
+</script>
+</div>
+<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+</html>
+
+
