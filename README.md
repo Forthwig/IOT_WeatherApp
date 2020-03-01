@@ -25,11 +25,32 @@ Pour ce projet, nous choissirons le réseau **SigFox**, et non **LoRa**. Bien qu
 
 -Une portée urbaine et rurale supérieur (3/10Km et 30/50km)
 -Appareil et station protégè par ID unique 
--blablabla
+-meilleure portée "indoor"
+
+MQTT Vs HTTP
 
 **Shéma de notre solution**
+1. Node MCU -- ESP8266
+![Node MCU ESP8266](https://www.bastelgarage.ch/image/cache/catalog/Artikel/420181-420190/420184_5-800x800.jpg)	
 
-**Shéma éléctronique**
+2. SNOC Breakout Board - Sigfox BRKWS01
+![SNOC Breakout Board - Sigfox BRKWS01](https://qiita-image-store.s3.amazonaws.com/0/172313/0e936214-f347-f9b4-e9e9-bb7327b83d43.png)	
+
+Reliez: 
+* RX avec le PIN D8 (TX)
+* TX avec le PIN D7 (RX)
+* VCC avec 3V
+* GND avec GND
+
+3. Dht11 
+![DHT11](https://1.bp.blogspot.com/-7cT2bEcG3Ig/XbRys2rV5II/AAAAAAAAB3Y/O-AtFmQDUuEJpW8UJ4q12Q9G471uWH3_QCEwYBhgL/s1600/gambar4.png)	
+* VCC avec 3V
+* GND avec GND
+Le choix du PIN est libre, pour ce projet nous utilisons le PIN D1, libre à vous d'en choisir un autre sans oublier de modifier la déclaration dans 
+
+```sh
+#define DHTpin "PIN"
+```
 
 
 **Instalation et lancement du projet**
@@ -40,19 +61,31 @@ Pour ce projet, nous choissirons le réseau **SigFox**, et non **LoRa**. Bien qu
 - [Ngrok]( https://ngrok.com/)
 - [Python 3.7](https://www.python.org/downloads/release/python-370/)
 - [Flask](https://fr.wikipedia.org/wiki/Flask_(framework))
+- [MongoDB](https://www.mongodb.com/fr)
 
 2. Lancement du projet
 
-Avant toute chose, ouvrez votre IDE Arduino, installer la bilbiothèque ESP82XX et téléverser le programme dédié Par la suite lancez Ngrok, permettant de crée un localhost securisé
+Avant toute chose, il nous faut crée la base de donnée (MongoDb) dans laquelle les valeurs seront stockés.
+Ouvrez le fichier python MongoDB_Connection.py et placez vos identifiant obtenue dans la ligne suivante: 
+
+```sh
+def __init__(self,username="YOUR USERNAME",password="YOUR PASSWORD"):
+```
+
+Ensuite ouvrez votre IDE Arduino, installer la bilbiothèque ESP82XX et téléverser le programme dédié Par la suite lancez Ngrok, permettant de crée un localhost securisé (ici sur le port 5000)
 
 ```sh
 ngrok.exe http 5000
 ```
-Il ne faut pas oublier de déclarer la nouvelle adresse dans les callbacks SigFox !
-Ne reste plus qu'a executer l'app Flask
+**Il ne faut pas oublier de déclarer la nouvelle adresse dans les callbacks SigFox !**
+Ne reste plus qu'a executer l'app Flask en vérifiant que nous sommes également sur le port 5000
 
 ```sh
-cd nomdudossier
+cd C:\"YOUR ACCESS PATH"\Site_Weather_App
 python app.py
 ```
-Ne reste plus qu'a se rendre sur le port 5000 et profité de notre station météo ! 
+Ne reste plus qu'a se rendre sur votre navigateur préféré et profité de votre station météo DIY ! 
+
+```sh
+http://localhost:5000/home
+```
