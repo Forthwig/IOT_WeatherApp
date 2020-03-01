@@ -8,7 +8,7 @@ Il existe déjà de nombreux moyens de suivre la météo : la télévision, les 
 
 **Choix des technologies**
 
-1.Le matériel
+1. Le matériel
 
 Pour la réalisation de ce projet, notre choix se porte vers des technologies accèsible à tous au quotidien et peu honéreux. 
 
@@ -19,7 +19,7 @@ Pour la réalisation de ce projet, notre choix se porte vers des technologies ac
 
   - [Un abonement SigFox](https://www.sigfox.com/en)
 
-2.Le choix du réseau
+2. Le choix du réseau
 
 Pour ce projet, nous choissirons le réseau **SigFox**, et non **LoRa**. Bien qu'ils remplissent la même tâche, pour notre cas d'application, le réseaux SigFox propose des avantages : 
 
@@ -34,14 +34,25 @@ Pour ce projet, nous choissirons le réseau **SigFox**, et non **LoRa**. Bien qu
 
 **Instalation et lancement du projet**
 
+1. Installation/Requierements
+
+- [Arduino IDE](https://www.arduino.cc/en/Main/Software)
+- [Ngrok]( https://ngrok.com/)
+- [Python 3.7](https://www.python.org/downloads/release/python-370/)
+- [Flask](https://fr.wikipedia.org/wiki/Flask_(framework))
+
+2. Lancement du projet
+
+Avant toute chose, ouvrez votre IDE Arduino, installer la bilbiothèque ESP82XX et téléverser le programme dédié Par la suite lancez Ngrok, permettant de crée un localhost securisé
+
 ```sh
-$ cd "Nom du dossier"
+ngrok.exe http 5000
 ```
-
-Test
+Il ne faut pas oublier de déclarer la nouvelle adresse dans les callbacks SigFox !
+Ne reste plus qu'a executer l'app Flask
 
 ```sh
-$ npm install --production
-$ NODE_ENV=production node app
+cd nomdudossier
+python app.py
 ```
-
+Ne reste plus qu'a se rendre sur le port 5000 et profité de notre station météo ! 
