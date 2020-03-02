@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Weather App</title>
+    <link rel="icon" type="ico"  href="imgs/logo.ico"/>
+	<link rel="stylesheet" href="css/agency.css"/>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+	<script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+
+
+</head>
+
+<body>
+
+	
+
+	<div id="mySidenav" class="sidenav">
+	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  <a href="#">Home</a>
+	  <a href="graphe.html">Graphe</a>
+	  <a @click="changeCity($event)">Lille</a>
+	  <a @click="changeCity($event)">Paris</a>
+	  <a @click="changeCity($event)">Kiev</a>
+
+	  <a href="#">Contact</a>
+	</div>
+
+	<!-- Use any element to open the sidenav -->
+	<span id="click" onclick="openNav()"> ☰ Menu </span>
+
+
+	<script type="text/javascript">
+
+		/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+	function openNav() {
+	  document.getElementById("mySidenav").style.width = "250px";
+	  document.getElementById("weather").style.marginLeft = "250px";
+	  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+	}
+
+	/* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+	function closeNav() {
+	  document.getElementById("mySidenav").style.width = "0";
+	  document.getElementById("weather").style.marginLeft = "0";
+	  document.getElementById("body").style.backgroundColor = "rgba(0,0,0,0.8)"; 
+	}
+	</script>
+		
+
+	
+	<div id="weather"> 
+        
+            <a id = "city" >{{ dataWeather.name }}</a>
+            <a id = "temperature">{{ dataWeather.main.temp }} °C </a>
+            <a> Humidity : {{ dataWeather.main.humidity }} % </a>
+        	<a id ="weath">{{ dataWeather.weather[0].description }}</a>  
+        
+    </div>     
+    
+    <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+    
+</body>
+
+</html>
