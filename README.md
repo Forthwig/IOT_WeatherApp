@@ -46,7 +46,7 @@ Reliez:
 ![DHT11](https://1.bp.blogspot.com/-7cT2bEcG3Ig/XbRys2rV5II/AAAAAAAAB3Y/O-AtFmQDUuEJpW8UJ4q12Q9G471uWH3_QCEwYBhgL/s1600/gambar4.png)	
 * VCC avec 3V
 * GND avec GND
-Le choix du PIN est libre, pour ce projet nous utilisons le PIN D1, libre à vous d'en choisir un autre sans oublier de modifier la déclaration dans 
+Le choix du PIN est libre, pour ce projet nous utilisons le PIN D1, libre à vous d'en choisir un autre sans oublier de modifier la déclaration dans le fichier DHT_Sig.ino
 
 ```sh
 #define DHTpin "PIN"
@@ -65,20 +65,20 @@ Le choix du PIN est libre, pour ce projet nous utilisons le PIN D1, libre à vou
 
 2. Lancement du projet
 
-Avant toute chose, il nous faut crée la base de donnée (MongoDb) dans laquelle les valeurs seront stockés.
-Ouvrez le fichier python MongoDB_Connection.py et placez vos identifiant obtenue dans la ligne suivante: 
+Avant toute chose, il nous faut créer la base de donnée (MongoDb) dans laquelle les valeurs seront stockés.
+Ouvrez le fichier python MongoDB_Connection.py et placez vos identifiant obtenus dans la ligne suivante: 
 
 ```sh
 def __init__(self,username="YOUR USERNAME",password="YOUR PASSWORD"):
 ```
 
-Ensuite ouvrez votre IDE Arduino, installer la bilbiothèque ESP82XX et téléverser le programme dédié Par la suite lancez Ngrok, permettant de crée un localhost securisé (ici sur le port 5000)
+Ensuite ouvrez votre IDE Arduino, installez la bilbiothèque ESP82XX et téléversez le programme dédié Par la suite lancez Ngrok, permettant de crée un localhost securisé (ici sur le port 5000)
 
 ```sh
 ngrok.exe http 5000
 ```
 **Il ne faut pas oublier de déclarer la nouvelle adresse dans les callbacks SigFox !**
-Ne reste plus qu'a executer l'app Flask en vérifiant que nous sommes également sur le port 5000
+Il ne reste plus qu'a executer l'app Flask en vérifiant que nous sommes également sur le port 5000
 
 ```sh
 cd C:\"YOUR ACCESS PATH"\Site_Weather_App
